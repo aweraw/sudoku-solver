@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Sudoku Solver</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/grid.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+  </head>
+  <body>
+    <h2>Sudoku Solver</h2>
+    <form id="grid" action="/solve">
+      <table>
+	<tr class="top">
+	  <td>
+	    <input class="box" maxlength="1" id="aa" size="1" type="text"><input class="box" maxlength="1" id="ab" size="1" type="text"><input class="box" maxlength="1" id="ac" size="1" type="text">
+	  </td>
+	  <td>
+	    <input class="box" maxlength="1" id="ad" size="1" type="text"><input class="box" maxlength="1" id="ae" size="1" type="text"><input class="box" maxlength="1" id="af" size="1" type="text">
+	  </td>
+	  <td>
+	    <input class="box" maxlength="1" id="ag" size="1" type="text"><input class="box" maxlength="1" id="ah" size="1" type="text"><input class="box" maxlength="1" id="ai" size="1" type="text">
+	  </td>
+	</tr>
+	<tr>
+	  <td>
+	    <input class="box" maxlength="1" id="ba" size="1" type="text"><input class="box" maxlength="1" id="bb" size="1" type="text"><input class="box" maxlength="1" id="bc" size="1" type="text">
+	  </td>
+	  <td>
+	    <input class="box" maxlength="1" id="bd" size="1" type="text"><input class="box" maxlength="1" id="be" size="1" type="text"><input class="box" maxlength="1" id="bf" size="1" type="text">
+	  </td>
+	  <td>
+	    <input class="box" maxlength="1" id="bg" size="1" type="text"><input class="box" maxlength="1" id="bh" size="1" type="text"><input class="box" maxlength="1" id="bi" size="1" type="text">
+	  </td>
+	</tr>
+	<tr class="bot">
+	  <td>
+	    <input class="box" maxlength="1" id="ca" size="1" type="text"><input class="box" maxlength="1" id="cb" size="1" type="text"><input class="box" maxlength="1" id="cc" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="cd" size="1" type="text"><input class="box" maxlength="1" id="ce" size="1" type="text"><input class="box" maxlength="1" id="cf" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="cg" size="1" type="text"><input class="box" maxlength="1" id="ch" size="1" type="text"><input class="box" maxlength="1" id="ci" size="1" type="text">
+	  </td>
+	</tr>
+	<tr class="top">
+	  <td>
+	    <input class="box" maxlength="1" id="da" size="1" type="text"><input class="box" maxlength="1" id="db" size="1" type="text"><input class="box" maxlength="1" id="dc" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="dd" size="1" type="text"><input class="box" maxlength="1" id="de" size="1" type="text"><input class="box" maxlength="1" id="df" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="dg" size="1" type="text"><input class="box" maxlength="1" id="dh" size="1" type="text"><input class="box" maxlength="1" id="di" size="1" type="text">
+	  </td>
+	</tr>
+	<tr>
+	  <td>
+	    <input class="box" maxlength="1" id="ea" size="1" type="text"><input class="box" maxlength="1" id="eb" size="1" type="text"><input class="box" maxlength="1" id="ec" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="ed" size="1" type="text"><input class="box" maxlength="1" id="ee" size="1" type="text"><input class="box" maxlength="1" id="ef" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="eg" size="1" type="text"><input class="box" maxlength="1" id="eh" size="1" type="text"><input class="box" maxlength="1" id="ei" size="1" type="text">
+	  </td>
+	</tr>
+	<tr class="bot">
+	  <td>
+	    <input class="box" maxlength="1" id="fa" size="1" type="text"><input class="box" maxlength="1" id="fb" size="1" type="text"><input class="box" maxlength="1" id="fc" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="fd" size="1" type="text"><input class="box" maxlength="1" id="fe" size="1" type="text"><input class="box" maxlength="1" id="ff" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="fg" size="1" type="text"><input class="box" maxlength="1" id="fh" size="1" type="text"><input class="box" maxlength="1" id="fi" size="1" type="text">
+	  </td>
+	</tr>
+	<tr class="top">
+	  <td>
+	    <input class="box" maxlength="1" id="ga" size="1" type="text"><input class="box" maxlength="1" id="gb" size="1" type="text"><input class="box" maxlength="1" id="gc" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="gd" size="1" type="text"><input class="box" maxlength="1" id="ge" size="1" type="text"><input class="box" maxlength="1" id="gf" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="gg" size="1" type="text"><input class="box" maxlength="1" id="gh" size="1" type="text"><input class="box" maxlength="1" id="gi" size="1" type="text">
+	  </td>
+	</tr>
+	<tr>
+	  <td>
+	    <input class="box" maxlength="1" id="ha" size="1" type="text"><input class="box" maxlength="1" id="hb" size="1" type="text"><input class="box" maxlength="1" id="hc" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="hd" size="1" type="text"><input class="box" maxlength="1" id="he" size="1" type="text"><input class="box" maxlength="1" id="hf" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="hg" size="1" type="text"><input class="box" maxlength="1" id="hh" size="1" type="text"><input class="box" maxlength="1" id="hi" size="1" type="text">
+	  </td>
+	</tr>
+	<tr class="bot">
+	  <td>
+	    <input class="box" maxlength="1" id="ia" size="1" type="text"><input class="box" maxlength="1" id="ib" size="1" type="text"><input class="box" maxlength="1" id="ic" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="id" size="1" type="text"><input class="box" maxlength="1" id="ie" size="1" type="text"><input class="box" maxlength="1" id="if" size="1" type="text">
+	  </td>
+          <td>
+	    <input class="box" maxlength="1" id="ig" size="1" type="text"><input class="box" maxlength="1" id="ih" size="1" type="text"><input class="box" maxlength="1" id="ii" size="1" type="text">
+	  </td>
+	</tr>
+	<tr>
+	  <td colspan="3" id="buttons">
+	    <input value="Solve!" type="button" onclick="serialize()"><input value="Reset" type="reset">
+	  </td>
+	</tr>
+      </table>
+    </form>
+    <p id="valid">
+      <a href="http://validator.w3.org/check?uri=referer">
+	<img src="http://www.w3.org/Icons/valid-html401-blue" alt="Valid HTML 4.01 Strict">
+      </a>
+      <a href="http://jigsaw.w3.org/css-validator/check/referer">
+	<img src="http://www.w3.org/Icons/valid-css2-blue" alt="Valid CSS">
+      </a>
+    </p>
+  </body>
+</html>

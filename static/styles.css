@@ -1,0 +1,52 @@
+body {
+    font-family: helvetica, arial;
+}
+
+h2, div {
+    text-align: center;
+    margin: 0 auto 0 auto;
+}
+
+table {
+    margin: 0 auto 0 auto;
+    border-collapse: collapse;
+}
+
+input {
+    font-size: large;
+}
+
+input.box {
+    padding-top: 0.35em;
+    padding-bottom: 0.35em;
+    font-size: x-large;
+    text-align: center;
+}
+
+tr.top td {
+    border-top: 0.5em solid black;
+}
+
+tr.bot td {
+    border-bottom: 0.5em solid black;
+}
+
+td {
+    border-left: 0.5em solid black;
+    border-right: 0.5em solid black;
+}
+
+td#buttons {
+    border: 0;
+    text-align: center;
+}
+
+p#valid {
+    float: right;
+}
+
+img {
+    border: 0;
+    width: 88px;
+    height: 31px;
+}
