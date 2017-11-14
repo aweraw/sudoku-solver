@@ -9,6 +9,7 @@ import cherrypy
 import re
 
 from cherrypy import expose
+from cherrypy.process.plugins import Daemonizer
 from template import template
 from sudoku import solve
 
@@ -39,7 +40,6 @@ def error_404(status, message, traceback, version):
 
 cherrypy.config.update({'error_page.404': error_404})
 
-application = cherrypy.Application(SudokuSolver(), config=cfg)
-
 if __name__ == '__main__':
+    Daemonizer(cherrypy.engine).subscribe()
     cherrypy.quickstart(SudokuSolver(), config=cfg)
