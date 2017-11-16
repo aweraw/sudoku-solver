@@ -1,6 +1,6 @@
 import sys, os
 
-# add this directory to the python path - wsgi environment hack
+# add this directory to the path - wsgi environment hack
 bd = os.path.split(os.path.abspath(__file__))[0]
 sys.path.append(bd)
 cfg = os.path.join(bd, 'config.ini')
