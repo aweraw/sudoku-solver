@@ -1,10 +1,5 @@
-import sys, os
-
-# add this directory to the path - wsgi environment hack
-bd = os.path.split(os.path.abspath(__file__))[0]
-sys.path.append(bd)
-cfg = os.path.join(bd, 'config.ini')
-
+import sys
+import os
 import cherrypy
 import re
 
@@ -13,7 +8,13 @@ from cherrypy.process.plugins import Daemonizer
 from template import template
 from sudoku import solve
 
+# add this directory to the path - wsgi environment hack
+bd = os.path.split(os.path.abspath(__file__))[0]
+sys.path.append(bd)
+cfg = os.path.join(bd, 'config.ini')
+
 e = re.compile('^[0-9]{81}$')
+
 
 class SudokuSolver:
 
@@ -32,11 +33,13 @@ class SudokuSolver:
         else:
             return "Not a valid sudoku"
 
+
 def error_404(status, message, traceback, version):
     return """<html>
   <head></head>
   <body><h2>Not Found</h2></body>
 </html>"""
+
 
 cherrypy.config.update({'error_page.404': error_404})
 
