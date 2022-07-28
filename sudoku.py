@@ -1,13 +1,14 @@
 from collections import defaultdict
+from functools import reduce
 
-vgroups = [[(x, y) for y in xrange(9)] for x in xrange(9)]
-hgroups = [[(x, y) for x in xrange(9)] for y in xrange(9)]
+vgroups = [[(x, y) for y in range(9)] for x in range(9)]
+hgroups = [[(x, y) for x in range(9)] for y in range(9)]
 lgroups = [
-    [(x, y) for y in xrange(a, a+3) for x in xrange(b, b+3)]
-    for a in xrange(0, 9, 3) for b in xrange(0, 9, 3)]
+    [(x, y) for y in range(a, a+3) for x in range(b, b+3)]
+    for a in range(0, 9, 3) for b in range(0, 9, 3)]
 
 ec_keys = reduce(lambda x, y: x+y, hgroups) + \
-          [(c, g, v) for c in 'hvl' for g in xrange(9) for v in xrange(1, 10)]
+          [(c, g, v) for c in 'hvl' for g in range(9) for v in range(1, 10)]
 
 
 def local_group(x, y):
@@ -48,12 +49,11 @@ def exact_cover(keys, rows, need=81):
     # remove the selected rows from the collection
     rows = [r for r in rows if r not in rs]
     # iterate through candidate rows and find the longest
-    # and therefore correct soltuion
+    # and therefore correct solution
     solutions = list()
     for row in rs:
         # find the keys set on row
         ks = [k for k in row if row[k]]
-        ks.sort()
         # remove the set keys from the collection
         fkeys = [k for k in keys if k not in ks]
         # remove any rows which have any of the same keys set
@@ -73,7 +73,7 @@ class Sudoku:
     def __init__(self, grid):
         self.grid = grid
         self.ngrid = [
-            [set(range(1, 10)) for x in xrange(9)] for y in xrange(9)]
+            [set(range(1, 10)) for x in range(9)] for y in range(9)]
         self.ec_matrix = list()
         self.init_ngrid()
         self.init_ec_matrix()
@@ -119,7 +119,7 @@ class Sudoku:
 
 
 def solve(sudoku):
-    grid = map(lambda x: map(int, x), zip(*[iter(sudoku)]*9))
+    grid = list(map(lambda x: list(map(int, x)), zip(*[iter(sudoku)]*9)))
     s = Sudoku(grid)
     s.solve()
     return ''.join(''.join(str(n) for n in x) for x in s.grid)

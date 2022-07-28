@@ -2,9 +2,9 @@ import sys
 import os
 import cherrypy
 import re
+import logging
 
 from cherrypy import expose
-from cherrypy.process.plugins import Daemonizer
 from template import template
 from sudoku import solve
 
@@ -14,7 +14,6 @@ sys.path.append(bd)
 cfg = os.path.join(bd, 'config.ini')
 
 e = re.compile('^[0-9]{81}$')
-
 
 class SudokuSolver:
 
@@ -43,6 +42,9 @@ def error_404(status, message, traceback, version):
 
 cherrypy.config.update({'error_page.404': error_404})
 
+logger = logging.Logger('stdout')
+cherrypy.log.access_log = logger
+cherrypy.log.error_log = logger
+
 if __name__ == '__main__':
-    Daemonizer(cherrypy.engine).subscribe()
     cherrypy.quickstart(SudokuSolver(), config=cfg)
